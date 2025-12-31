@@ -1,0 +1,15 @@
+  return r.json().catch(err => { console.error('get_students json parse', err); return null; });
+
+
+  Explication détaillée :
+r.json() : Tente de parser le corps de la réponse HTTP en objet JSON. Si la réponse est du JSON valide, la promesse se résout avec les données. Si ce n'est pas du JSON (ex. : erreur HTML du serveur), la promesse rejette avec une erreur.
+.catch(err => { ... }) : Attrape toute erreur survenue lors du parsing. Cela permet de gérer les cas où le serveur renvoie du texte non-JSON au lieu de JSON.
+console.error('get_students json parse', err) : Log l'erreur dans la console pour le débogage.
+return null : Retourne null au lieu de laisser l'erreur propager, évitant un crash de la chaîne de promesses.
+return : Retourne la promesse de r.json() (avec le .catch attaché) au prochain .then() dans la chaîne.
+Équivalent logique à un if :
+C'est comme si on disait : "Essaie de parser en JSON. Si ça réussit, continue avec les données. Sinon, log l'erreur et retourne null."
+
+Dans le code suivant (.then(data => { ... })), data sera soit les données JSON parsées, soit null en cas d'erreur. Cela rend le code robuste sans planter l'application.
+
+Si tu veux un comportement plus strict (comme un if), tu pourrais utiliser try/catch avec await, mais ici c'est adapté aux promesses. Si tu as des exemples d'erreurs rencontrées, je peux aider à déboguer !

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,15 +17,19 @@
   </header>
 
   <div class="container">
+  
     <!-- Menu -->
     <nav id="sidebar">
       <h3>Navigation</h3>
       <ul>
+        <li><a href="Homepage.html" target="_blank">🏠Home</a></li>
         <li onclick="showSection('clubs')">🏫Club Management</li>
         <li onclick="showSection('events')">🎉Event Management</li>
-        <li onclick="showSection('students')">👩‍🎓Student Management</li>
+        <li onclick="showSection('students')">👨‍🎓Students  </li>
         <li onclick="showSection('admins')">👑Admin Management</li>
-        <li onclick="makedarker()"> ⚙️settings</li>
+        <li onclick="showSection('stats')">📊 Statistics</li>
+        <li onclick="showSection('settings')">⚙️ Settings</li>
+        <li><a href="login.html">[➜Logout</a></li>
       </ul>
     </nav>
 
@@ -35,12 +38,20 @@
       <!-- Clubs Section -->
       <div id="clubs" class="card">
         <h2>🏫Club Management</h2>
-        <input type="text" id="clubName" placeholder="Club name">
-        <textarea id="clubDescription"  placeholder="Club description"></textarea>
-        <button onclick="addClub()">➕Add Club</button>
+
+        <form id="clubForm" method="POST" action="insert_club.php" enctype="multipart/form-data">
+    <input type="text" id="clubName" name="clubName" required placeholder="club name">
+    <input type="text" id="clubSlug" name="clubSlug" required placeholder="club slogan / short slug">
+    <input type="file" id="clubPhoto" name="photo" accept="image/*">
+    <input type="file" id="clubLogo" name="logo" accept="image/*">
+    <textarea id="clubDescription" name="description"  placeholder="description field"></textarea>
+
+    <button type="submit" >➕ Add Club</button>
+</form>
+      
         <table>
           <thead>
-            <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+            <tr><th>ID</th><th>Name</th><th colspan="2">Actions</th></tr>
           </thead>
           <tbody id="clubsTable"></tbody>
         </table>
@@ -64,13 +75,18 @@
       <!-- Students Section -->
       <div id="students" class="card" style="display:none;">
         <h2>👨‍🎓Student Management</h2>
-        <input type="text" id="studentName" class="anyInput" placeholder="Student name">
-        <input type="email" id="studentEmail" placeholder="Student email">
-        <select id="studentClub"></select>
-        <button onclick="addStudent()">➕Add Student</button>
+        
+                <form id="studentForm" method="POST" action="insert_student.php" enctype="multipart/form-data">
+
+        <input type="text" id="student_fname" name="student_fname" class="anyInput" placeholder="Student first name">
+        <input type="text" id="student_lname" name="student_lname"class="anyInput" placeholder="Student last name">
+        <input type="email" id="studentEmail" name="studentEmail" class="anyInput" placeholder="Student email">
+        <select id="studentClub" name="studentClub"></select>
+        <button  type="submit" onclick="addStudent()">➕Add student</button>
+        </form>
         <table>
           <thead>
-            <tr><th>ID</th><th>Name</th><th>Email</th><th>Club</th><th>Actions</th></tr>
+            <tr><th>ID</th><th>Name</th><th>Email</th><th>Club</th><th colspan="2">Actions</th></tr>
           </thead>
           <tbody id="studentsTable"></tbody>
         </table>
@@ -78,18 +94,53 @@
 
       <!-- Admins Section -->
       <div id="admins" class="card" style="display:none;">
-        <h2>🧑‍💼Admin Management</h2>
-        <input type="text" id="adminName" class="anyInput" placeholder="Admin name">
-        <select id="adminClub"></select>
-        <button onclick="addAdmin()">👑Add Admin</button>
+
+        <h2>🧑‍💼Admin Management</h2>  
+        <form id="adminForm" method="POST" action="insert_admin.php" enctype="multipart/form-data">
+
+        <input type="email" id="adminEmail" name="adminEmail" class="anyInput" placeholder="Admin email">
+        <input type="password" id="adminPassword" name="password" class="anyInput" placeholder="Admin password">
+        <input type="text" id="adminRole" name="role" class="anyinput" placeholder="admin role">
+        <select id="adminClub" name="adminClub"></select>
+        <button  onclick="addAdmin()">👑Add Admin</button>
+        </form>
         <table>
           <thead>
-            <tr><th>ID</th><th>Name</th><th>Club</th><th>Actions</th></tr>
+            <tr><th>ID</th><th>Email</th><th>role</th><th>Club</th><th>Actions</th></tr>
           </thead>
           <tbody id="adminsTable"></tbody>
         </table>
       </div>
+    <div id="stats" class="card" style="display:none;">
+  <h2>📊 Dashboard Statistics</h2>
+
+  <div class="stats-container">
+    <div class="stat-box" style="color:#FFC107">Total Clubs: <span id="statClubs">0</span></div>
+    <div class="stat-box" style="color:#E91E63">Total Events: <span id="statEvents">0</span></div>
+    <div class="stat-box" style="color:#2196F3">Total Students: <span id="statStudents">0</span></div>
+    <div class="stat-box" style="color:#4CAF50">Total Admins: <span id="statAdmins">0</span></div>
+  </div>
+
+  <div class="chart-controls">
+    <button id="pieChartBtn" onclick="showPieChart()">Pie Chart</button>
+    <button id="barChartBtn" onclick="showBarChart()">Bar Chart</button>
+  </div>
+
+  <canvas id="chartCanvas" width="400" height="300"></canvas>
+</div>
+
+<!-- Settings Section -->
+<div id="settings" class="card" style="display:none;">
+  <h2>⚙️ Settings</h2>
+  <div class="form-group">
+    <label for="themeToggle">Theme:</label>
+    <button id="themeToggle" onclick="toggleTheme()">Switch to Dark Mode</button>
+  </div>
+</div>
     </main>
   </div>
-  <script src="test.js"></script>
+  <script src="superAdmin.js"></script>
+    <script src="superAdmin2.js"></script>
+
+  </body>
 </html>

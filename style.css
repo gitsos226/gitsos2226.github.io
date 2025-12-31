@@ -33,7 +33,7 @@ header h1 {
 
 /* Le menu hamburger */
 .menu-icon {
-  position: absolute; /* permet de le placer librement */
+   position:absolute;/* permet de le placer librement */
   top: 20px;           /* distance depuis le haut */
   right: 20px;         /* distance depuis la droite */
   display: flex;
@@ -94,9 +94,10 @@ span{
   gap: 10px;
     }
     nav ul li:hover {
-  background: #2c3e50;
-  transform: translateX(4px);
-}
+      background: #2c3e50;
+      transform: translateX(4px);
+    }
+    
     main {
       flex: 1;
       padding: 20px;
@@ -110,6 +111,32 @@ span{
     }
     .card:hover {
   box-shadow: 0 8px 24px rgba(44,62,80,0.13);
+}
+nav ul a{
+  text-decoration: none;
+  color: inherit;
+}
+nav ul a:hover {
+  background: #2c3e50;
+  transform: translateX(4px);
+}
+    .stats-container {
+      display: flex;
+      gap: 20px;
+    }
+    .stat-box {
+      margin: auto;
+      background: #f0f0f0;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1.2em;
+      font-weight: bold;
+      flex: 1;
+      text-align: center;
+    }
+    h2, h3 {
+      margin-bottom: 12px;
+      color: #34495e;
 }
     h2 {
       margin-top: 0;
@@ -151,10 +178,45 @@ table th, table td {
   border: 1px solid #e0e7ef;
   text-align: left;
   font-size: 0.98rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
 }
 table th {
   background: #f4f6f9;
   color: #34495e;
+}
+@media screen and (max-width: 600px) {
+  .container {
+display: flex;  }
+  nav {
+    min-height: unset;
+    box-shadow: none;
+    padding: 18px 10px;
+    flex-shrink:1;
+  
+  }
+  header{
+    background-color: rgb(114, 255, 255);
+    color: black;
+  }.stats-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.stat-box {
+  background: #f0f0f0;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+}
+
+  main{
+    background-image: radial-gradient(white,rgb(138, 138, 255));
+  }
 }
 
 .menu-icon.active div:first-child {
@@ -165,4 +227,85 @@ table th {
 }
 .menu-icon.active div:last-child {
   transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+.valid {
+    border: 5px bold green;
+
+}
+
+.invalid {
+    border: 5px bold red;
+    color: red;
+}
+@keyframes turnpie {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+#chartCanvas {
+   /* display: block;*/
+    max-width: 500px;
+    margin: auto;
+    animation: turnpie 8s linear infinite;
+    transform-origin: center center;
+}
+
+canvas { 
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center;     /* Centre verticalement si hauteur définie */
+  margin-top: 20px;
+  margin: auto;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background: linear-gradient(120deg, #2c3e50 60%, #34495e 100%);
+  color: #ecf0f1;
+}
+
+body.dark-mode header {
+  background: linear-gradient(90deg, #2c3e50, #34495e, #1a252f);
+}
+
+body.dark-mode .card {
+  background: #34495e;
+  color: #ecf0f1;
+  border: 1px solid #7f8c8d;
+}
+
+body.dark-mode input, body.dark-mode select, body.dark-mode button {
+  background: #2c3e50;
+  color: #ecf0f1;
+  border: 1px solid #7f8c8d;
+}
+
+body.dark-mode table th, body.dark-mode table td {
+  background: #34495e;
+  color: #ecf0f1;
+  border: 1px solid #7f8c8d;
+}
+
+body.dark-mode .stat-box {
+  background: #34495e;
+  color: #ecf0f1;
+}
+.chart-controls{
+display: flex;
+justify-content: space-evenly;
+}
+#pieChartBtn{
+  margin-left:40px;
+  margin-right:40px;
+  width: 50%;
+}
+#barChartBtn{
+  margin-right:40px;
+  margin-left:40px;
+  width: 50%;
+}
+#stats{
+  padding-bottom:3em;
 }

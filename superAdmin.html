@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Super Admin Dashboard</title>
+  <link rel="stylesheet" href="superAdmin.css">
+</head>
+<body>
+  <header>
+    <h1><span>👑</span>Super Admin Dashboard</h1>
+    <div class="menu-icon" onclick="appear()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <script src="testsosthene.js"></script>
+  </header>
+
+  <div class="container">
+    <!-- Menu -->
+    <nav id="sidebar">
+      <h3>Navigation</h3>
+      <ul>
+        <li onclick="showSection('clubs')">🏫Club Management</li>
+        <li onclick="showSection('events')">🎉Event Management</li>
+        <li onclick="showSection('students')">👩‍🎓Student Management</li>
+        <li onclick="showSection('admins')">👑Admin Management</li>
+        <li onclick="makedarker()"> ⚙️settings</li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Clubs Section -->
+      <div id="clubs" class="card">
+        <h2>🏫Club Management</h2>
+        <input type="text" id="clubName" placeholder="Club name">
+        <input type="text" id="clubSlug" placeholder="Club slogan / short slug">
+        <textarea id="clubDescription"  placeholder="Club description"></textarea>
+        <label for="clubLogo">Logo:</label>
+        <input type="file" id="clubLogo" accept="image/*">
+        <label for="clubPhoto">Photo:</label>
+        <input type="file" id="clubPhoto" accept="image/*">
+        <button onclick="addClub()">➕Add Club</button>
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="clubsTable"></tbody>
+        </table>
+      </div>
+
+      <!-- Events Section -->
+      <div id="events" class="card" style="display:none;">
+        <h2>🎉Event Management</h2>
+        <input type="text" id="eventName" class="anyInput" placeholder="Event name">
+        <input type="file" id="eventImage" class="anyInput" accept="image/*">
+        <select id="eventClub"></select>
+        <button onclick="addEvent()">➕Add Event</button>
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Club</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="eventsTable"></tbody>
+        </table>
+      </div>
+
+      <!-- Students Section -->
+      <div id="students" class="card" style="display:none;">
+        <h2>👨‍🎓Student Management</h2>
+        <input type="text" id="studentName" class="anyInput" placeholder="Student name">
+        <input type="email" id="studentEmail" class="anyInput" placeholder="Student email">
+        <select id="studentClub"></select>
+        <button onclick="addStudent()">➕Add Student</button>
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Club</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="studentsTable"></tbody>
+        </table>
+      </div>
+
+      <!-- Admins Section -->
+      <div id="admins" class="card" style="display:none;">
+        <h2>🧑‍💼Admin Management</h2>
+        <input type="text" id="adminName" class="anyInput" placeholder="Admin name">
+        <select id="adminClub"></select>
+        <button onclick="addAdmin()">👑Add Admin</button>
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Club</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="adminsTable"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+  <script src="superAdmin.js"></script>
+</body>
+</html>

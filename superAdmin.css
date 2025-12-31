@@ -1,0 +1,185 @@
+ *{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+ }
+ 
+ body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #f4f6f9 60%, #e0e7ef 100%);
+  margin: 0;
+  padding: 0;
+  color: #222;
+    }
+   header {
+  position: relative; /* nécessaire pour positionner l’icône à l’intérieur */
+  animation: moveBg 10s linear infinite;
+  background: linear-gradient(90deg, #3498db, rgb(70, 70, 152), #6745c4);
+  color: white;
+  text-align: center; /* centre le texte du h1 */
+  padding: 40px 0;
+  font-family: Arial, sans-serif;
+}
+
+@keyframes moveBg {
+  from { background-position: 0 0; }
+  to { background-position: -1350px 0; }
+}
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+/* Le menu hamburger */
+.menu-icon {
+  position: absolute; /* permet de le placer librement */
+  top: 20px;           /* distance depuis le haut */
+  right: 20px;         /* distance depuis la droite */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+}
+.menu-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;  
+
+}
+span{
+  transform: scale(1.5);
+}
+
+.menu-icon div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 2px 0;
+  border-radius: 2px;
+}
+    .container {
+       display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+    }
+    nav {
+      width: 220px;
+  background: #356493;
+  color: white;
+  min-height: 100vh;
+  padding: 24px 20px;
+  box-shadow: 2px 0 8px rgba(44,62,80,0.05);
+  font-weight: bold;
+
+  }
+    nav h3 {
+  font-size: 1.2rem;
+  margin-bottom: 18px;
+}
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 18px 0;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s;
+  font-size: 1.08rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+    }
+    nav ul li:hover {
+  background: #2c3e50;
+  transform: translateX(4px);
+}
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .card:hover {
+  box-shadow: 0 8px 24px rgba(44,62,80,0.13);
+}
+    h2 {
+      margin-top: 0;
+    }
+    input, select, button, textarea {
+    margin: 7px 0;
+  padding: 10px;
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #dbe2ea;
+  box-sizing: border-box;
+}
+    
+   button {
+  background: #3498db;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 6px rgba(52,152,219,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+button:hover {
+  background: #2980b9;
+  box-shadow: 0 4px 12px rgba(52,152,219,0.13);
+}
+   table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+table th, table td {
+  padding: 10px 8px;
+  border: 1px solid #e0e7ef;
+  text-align: left;
+  font-size: 0.98rem;
+}
+table th {
+  background: #f4f6f9;
+  color: #34495e;
+}
+@media screen and (max-width: 600px) {
+  .container {
+display: flex;  }
+  nav {
+    min-height: unset;
+    box-shadow: none;
+    padding: 18px 10px;
+    flex-shrink:1;
+  }
+  header{
+    background-color: rgb(114, 255, 255);
+    color: black;
+  }
+  main{
+    background-image: radial-gradient(white,rgb(138, 138, 255));
+  }
+}
+
+.menu-icon.active div:first-child {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-icon.active div:nth-child(2) {
+  opacity: 0;
+}
+.menu-icon.active div:last-child {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
